@@ -24,8 +24,8 @@ import traceback
 
 import bittensor as bt
 
-from template.base.neuron import BaseNeuron
-from template.utils.config import add_miner_args
+from bitvision.base.neuron import BaseNeuron
+from bitvision.utils.config import add_miner_args
 
 
 class BaseMinerNeuron(BaseNeuron):

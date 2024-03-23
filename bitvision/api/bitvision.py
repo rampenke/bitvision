@@ -23,7 +23,7 @@ from template.protocol import Dummy
 from bittensor.subnets import SubnetsAPI
 
 
-class DummyAPI(SubnetsAPI):
+class BitVision(SubnetsAPI):
     def __init__(self, wallet: "bt.wallet"):
         super().__init__(wallet)
         self.netuid = 33

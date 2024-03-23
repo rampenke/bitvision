@@ -40,22 +40,22 @@ import bittensor as bt
 #   assert dummy_output == 2
 
 
-class Dummy(bt.Synapse):
+class BitVisionSynapse(bt.Synapse):
     """
     A simple dummy protocol representation which uses bt.Synapse as its base.
     This protocol helps in handling dummy request and response communication between
     the miner and the validator.
 
     Attributes:
-    - dummy_input: An integer value representing the input request sent by the validator.
-    - dummy_output: An optional integer value which, when filled, represents the response from the miner.
+    - inputUrl: An integer value representing the input request sent by the validator.
+    - output: An optional integer value which, when filled, represents the response from the miner.
     """
 
     # Required request input, filled by sending dendrite caller.
-    dummy_input: int
+    inputUrl: str
 
     # Optional request output, filled by recieving axon.
-    dummy_output: typing.Optional[int] = None
+    outputUrl: str
 
     def deserialize(self) -> int:
         """
@@ -73,4 +73,4 @@ class Dummy(bt.Synapse):
         >>> dummy_instance.deserialize()
         5
         """
-        return self.dummy_output
+        return self.output
