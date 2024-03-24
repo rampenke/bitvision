@@ -55,7 +55,7 @@ class BitVisionSynapse(bt.Synapse):
     inputUrl: str
 
     # Optional request output, filled by recieving axon.
-    outputUrl: str
+    outputUrl: str = None
 
     def deserialize(self) -> int:
         """
@@ -68,9 +68,9 @@ class BitVisionSynapse(bt.Synapse):
 
         Example:
         Assuming a Dummy instance has a dummy_output value of 5:
-        >>> dummy_instance = Dummy(dummy_input=4)
-        >>> dummy_instance.dummy_output = 5
+        >>> dummy_instance = Dummy(inputUrl="test")
+        >>> dummy_instance.outputUrl = "TestOut"
         >>> dummy_instance.deserialize()
-        5
+        "TestOut"
         """
-        return self.output
+        return self.outputUrl

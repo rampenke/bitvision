@@ -37,13 +37,16 @@ async def forward(self):
     # TODO(developer): Define how the validator selects a miner to query, how often, etc.
     # get_random_uids is an example method, but you can replace it with your own.
     miner_uids = get_random_uids(self, k=self.config.neuron.sample_size)
+    inputUrl = "https://vidlib.bitvision.com/validate/test.mp4"
+    # Create synapse object to send to the miner and attach the image.
+    synapse = BitVisionSynapse(inputUrl = inputUrl)
 
     # The dendrite client queries the network.
     responses = await self.dendrite(
         # Send the query to selected miner axons in the network.
         axons=[self.metagraph.axons[uid] for uid in miner_uids],
         # Construct a BitVisionSynapse query. This simply contains a single integer.
-        synapse=BitVisionSynapse(dummy_input=self.step),
+        synapse=synapse,
         # All responses have the deserialize function called on them before returning.
         # You are encouraged to define your own deserialization function.
         deserialize=True,
